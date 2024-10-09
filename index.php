@@ -17,14 +17,28 @@
         }
     </style>
 </head>
-<body class="bg-gradient-vertical">
+<body class="bg-gradient-vertical ">
     <div style="z-index:-1;position: absolute;height: 80vh;width:100%;background-image: url(imagenfondo.jpg);opacity: 0.5;background-repeat: no-repeat;background-position: center;filter: grayscale(100%);margin-top: 13vh;">
     </div>
-    <div class="container text-center text-white">
-        <h1 class="mb-4">¡Bienvenido a la Página con Fondo Degradado Vertical!</h1>
-        <p class="lead">Esta es una demostración de un fondo en degradado vertical usando Bootstrap 5.</p>
+    <div style="height:100vh;">
+        <div class="row">
+            <div class="col-4 text-center text-white">
+                <h3 class="mb-4">Datos para el pago</h3>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-4 text-center text-white">
+                <h3 class="mb-4">Pago 100% seguro</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div style="" class="container text-center text-white">
+                <h1 class="mb-4">¡Bienvenido a la Página con Fondo Degradado Vertical!</h1>
+                <p class="lead">Esta es una demostración de un fondo en degradado vertical usando Bootstrap 5.</p>
 
-        <input type="text" />
+                <input type="text" />
+            </div>
+        </div>
     </div>
     <!-- Incluyendo Bootstrap JS y Popper.js desde el CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
