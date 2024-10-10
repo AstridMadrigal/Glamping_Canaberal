@@ -44,10 +44,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             .myDiv:before {
                 background-size: auto 100%!important;
             }
-
-            .bg-gradient-vertical {
-                height: auto!important; /* Ajusta la altura al 100% de la ventana */
-            }
         }
 
         .myDiv:before {
@@ -58,7 +54,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             bottom: 5%;
             left: 0;
             right: 0;
-            background: url(../../assets/imagenfondo.jpg) center center;
+            background: url(<?=Yii::$app->getUrlManager()->getBaseUrl()?>/assets/imagenfondo.jpg) center center;
             background-repeat: no-repeat;
             background-position: center;
             opacity: 0.5;
@@ -74,7 +70,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="row">
             <div class="col-md-3"></div>
             <div style="height: 30vh;text-align:center;" class="col-md-6">
-                <img src="../../assets/logo_pequeño.jpeg" height="100%"  />
+                <img src="<?=Yii::$app->getUrlManager()->getBaseUrl()?>/assets/logo_pequeño.jpeg" height="100%"  />
             </div>
             <div class="col-md-3"></div>
         </div>
