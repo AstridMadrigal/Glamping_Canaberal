@@ -8,12 +8,15 @@ use Yii;
  * This is the model class for table "usuario".
  *
  * @property int $idUsuario
- * @property string|null $Nombre
- * @property string|null $Apellido
- * @property string|null $Fecha de nacimiento
- * @property string|null $Email
- * @property string|null $Contraseña
- * @property string|null $Fecha de Actualización de datos
+ * @property string|null $tipo_documento
+ * @property int|null $documento
+ * @property string|null $nombre
+ * @property string|null $apellido
+ * @property string|null $fecha_nacimiento
+ * @property int $telefono
+ * @property string|null $email
+ * @property string|null $contraseña
+ * @property string|null $fecha_actualizacion_datos
  *
  * @property PerfilesUsuarios[] $perfilesUsuarios
  * @property Reserva[] $reservas
@@ -34,13 +37,12 @@ class Usuario extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idUsuario'], 'required'],
-            [['idUsuario'], 'integer'],
-            [['Fecha de Actualización de datos'], 'safe'],
-            [['Nombre', 'Apellido'], 'string', 'max' => 20],
-            [['Fecha de nacimiento'], 'string', 'max' => 10],
-            [['Email', 'Contraseña'], 'string', 'max' => 30],
-            [['idUsuario'], 'unique'],
+            [['tipo_documento'], 'string'],
+            [['documento', 'telefono'], 'integer'],
+            [['fecha_nacimiento', 'fecha_actualizacion_datos'], 'safe'],
+            [['telefono'], 'required'],
+            [['nombre', 'apellido'], 'string', 'max' => 20],
+            [['email', 'contraseña'], 'string', 'max' => 30],
         ];
     }
 
@@ -51,12 +53,15 @@ class Usuario extends \yii\db\ActiveRecord
     {
         return [
             'idUsuario' => 'Id Usuario',
-            'Nombre' => 'Nombre',
-            'Apellido' => 'Apellido',
-            'Fecha de nacimiento' => 'Fecha De Nacimiento',
-            'Email' => 'Email',
-            'Contraseña' => 'Contraseña',
-            'Fecha de Actualización de datos' => 'Fecha De Actualización De Datos',
+            'tipo_documento' => 'Tipo Documento',
+            'documento' => 'Documento',
+            'nombre' => 'Nombre',
+            'apellido' => 'Apellido',
+            'fecha_nacimiento' => 'Fecha Nacimiento',
+            'telefono' => 'Telefono',
+            'email' => 'Email',
+            'contraseña' => 'Contraseña',
+            'fecha_actualizacion_datos' => 'Fecha Actualizacion Datos',
         ];
     }
 

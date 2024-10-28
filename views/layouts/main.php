@@ -24,10 +24,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <html lang="<?= Yii::$app->language ?>" class="">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <?php $this->head() ?>
 </head>
-<body class="">
+<body class="bg-gradient-vertical myDiv">
 <?php $this->beginBody() ?>
 
 <style>
@@ -37,13 +42,26 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             height: 100vh; /* Ajusta la altura al 100% de la ventana */
             display: flex;
             justify-content: center;
+            background-repeat: no-repeat;
             align-items: center;
         }
         
         @media only screen and (max-width: 600px) {
+            .bg-gradient-vertical {
+                height: auto; /* Ajusta la altura al 100% de la ventana */
+            }
+
             .myDiv:before {
                 background-size: auto 100%!important;
             }
+
+            .espacio_botones {
+                margin-bottom: 20px!important;
+            }
+        }
+
+        body {
+            min-height: 100vh;
         }
 
         .myDiv:before {
@@ -61,26 +79,67 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             background-size: 47% 100%;
             filter: grayscale(100%);
         }
+
+        .contenido, .page-container {
+          content: '';
+          display: block;
+          position: relative;
+          z-index: 2;
+        }
+
+        .espacio_botones{
+            margin-bottom: 200px;
+        }
 </style>
 
-<div class="bg-gradient-vertical d-flex flex-column">
-    <div class="myDiv">
-    </div>
-    <div class="container" style="height:100%;z-index:1;">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div style="height: 30vh;text-align:center;" class="col-md-6">
-                <img src="<?=Yii::$app->getUrlManager()->getBaseUrl()?>/assets/logo_pequeño.jpeg" height="100%"  />
+<?php 
+$menu = 'none';
+
+if(isset($_SESSION['menus']) && $_SESSION['menus']){
+    $menu = 'block';
+}
+
+?>
+
+<div class="container" style="height:100%;z-index:0;">
+    <div id="navbarmenu" style="display:<?=$menu?>">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Glamping Cañaberal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="gestionar-disponibilidad.php">Gestionar Disponibilidad</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Registrar Usuario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Programar Mantenimiento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Registrar visita</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Registrar Huesped</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Comunicarse con huéspedes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Crear Paquetes de ofertas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Crear ficha de cliente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->getUrlManager()->getBaseUrl().'/usuarios/form-usuarios' ?>">Gestionar Horarios</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-3"></div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div style="height: 30vh;text-align:center;" class="col-md-6">
+            <img src="<?=Yii::$app->getUrlManager()->getBaseUrl()?>/assets/logo_pequeño.jpeg" height="100%"  />
         </div>
-        <div class="row">
-            <?php if (!empty($this->params['breadcrumbs'])): ?>
-            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
-            <?php endif ?>
-            <?= Alert::widget() ?>
-            <?= $content ?>
-        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row contenido">
+        <?php if (!empty($this->params['breadcrumbs'])): ?>
+        <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
+        <?php endif ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
     </div>
 </div>
 
