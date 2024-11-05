@@ -18,6 +18,21 @@ class GlampingController extends Controller
         return $this->render('panoramica');
     }
 
+    public function actionReservas()
+    {
+        return $this->render('reservas');
+    }
+
+    public function actionVisitas()
+    {
+        return $this->render('visitas');
+    }
+
+    public function actionDisponibilidad()
+    {
+        return $this->render('disponibilidad');
+    }
+
     public function actionDomo()
     {
         return $this->render('domo');

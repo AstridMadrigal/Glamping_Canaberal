@@ -72,6 +72,11 @@ class UsuariosController extends Controller
         return $this->render('recuperar_contraseña.php');
     }
 
+    public function actionFichaCliente()
+    {
+        return $this->render('ficha_cliente.php');
+    }
+
     public function actionRecuperarContrasena(){
         $mensaje = '';
         $success = false;
@@ -185,4 +190,6 @@ class UsuariosController extends Controller
         }
         return json_encode($respuesta);
     }
+
+
 }

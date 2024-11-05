@@ -42,7 +42,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                ''=>'site/index2'
+                ''=>'glamping/panoramica'
             ],
         ],
 
